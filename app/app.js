@@ -1,3 +1,5 @@
+// uses ../assets/js/utilities.js
+
 var app = angular.module("Quakes", []);
 
 app.controller("QuakeController", function($scope, $http){
@@ -14,22 +16,5 @@ app.controller("QuakeController", function($scope, $http){
 			console.log(response.data.statusText);
 		});
 	};
-	
 });
 
-function loadQuakeData(features) {
-	var quakeData = [];
-	
-	features.forEach(function (feature) {
-		var props = feature.properties;
-		var coords = feature.geometry.coordinates;
-		quakeData.push({
-		  "place":props["place"],
-		  "magnitude":props["mag"],
-		  "latitude":coords[0],
-		  "longitude":coords[1]
-		});
-	});
-	
-	return quakeData;
-}
