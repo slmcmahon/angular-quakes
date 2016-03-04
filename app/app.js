@@ -1,5 +1,7 @@
 // uses ../assets/js/utilities.js
 
+var QUAKES_URL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+
 var app = angular.module("Quakes", []);
 
 app.controller("QuakeController", function($scope, $http){
@@ -8,7 +10,7 @@ app.controller("QuakeController", function($scope, $http){
 		$scope.quakeItems = [];
 		$http({
 			method: "GET",
-			url:"http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson"	
+			url:QUAKES_URL	
 		}).then(function mySuccess(response) {
 			$scope.quakeItems = loadQuakeData(response.data["features"]);
 		}, 

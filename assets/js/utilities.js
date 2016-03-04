@@ -1,4 +1,4 @@
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 function loadQuakeData(features) {
 	var quakeData = [];
@@ -13,8 +13,8 @@ function loadQuakeData(features) {
 			"title":props["title"],
 			"magnitude":props["mag"],
 			"url":props["url"],
-			"latitude":coords[0],
-			"longitude":coords[1],
+			"latitude":coords[1],
+			"longitude":coords[0],
 			"tsunami": (tsunami && tsunami == 1) ? "yes" : "no",
 			"date":formatDate(props["time"] / 1000)
 		});
@@ -30,7 +30,7 @@ function formatDate(longValue) {
 	
 	var day = d.getDay() + 1;
 	var tmp = day < 10 ? '0' + day : day;
-	var date = tmp + '-' + months[d.getMonth()] + '-' + (d.getYear() + 1900);
+	var date = tmp + '-' + MONTHS[d.getMonth()] + '-' + (d.getYear() + 1900);
 	var time = formatTime(d);
 	return date + ' at ' + time;
 }

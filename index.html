@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	  <link href="assets/css/default.css" rel="stylesheet">
-	  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  </head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="assets/css/default.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
   <body ng-app="Quakes">
-	  <div ng-controller="QuakeController" ng-init="loadData()">
-		  <ul class="list-group" ng-repeat="quake in quakeItems">
-			  <li class="list-group-item">
-			  Title: {{quake.title}}<br/>
-			  Magnitude: {{quake.magnitude}}<br/>
-			  Location: {{quake.latitude}} / {{quake.longitude}}<br/>
-			  Time: {{quake.date}}<br/>
-			  Tsunami warning: {{quake.tsunami}}<br>
-			  <a href="{{quake.url}}">More Info</a>
-		  	  </li>
-		  </ul>
-	  </div>
+    <div ng-controller="QuakeController" ng-init="loadData()">
+      <ul class="list-group" ng-repeat="quake in quakeItems">
+        <li class="list-group-item">
+          Title: {{quake.title}}<br/>
+          Magnitude: {{quake.magnitude}}<br/>
+          Location: {{quake.latitude}} / {{quake.longitude}}<br/>
+          Time: {{quake.date}}<br/>
+          Tsunami warning: {{quake.tsunami}}<br>
+          <a href="{{quake.url}}">More Info</a>
+        </li>
+      </ul>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="app/app.js"></script>
-	<script src="assets/js/utilities.js"></script>
+    <script src="assets/js/utilities.js"></script>
   </body>
 </html>
