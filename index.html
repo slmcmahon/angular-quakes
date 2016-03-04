@@ -4,9 +4,12 @@
   </head>
   <body ng-app="Quakes">
 	  <div ng-controller="QuakeController" ng-init="loadData()">
-	    <ul ng-repeat="quake in quakeItems">
-		  <li>{{quake.place}}.  Mag: {{quake.magnitude}} ({{quake.latitude}} / {{quake.longitude}})</li>
-		</ul>
+		  <div ng-repeat="quake in quakeItems">
+			  Place: {{quake.place}}<br/>
+			  Magnitude: {{quake.magnitude}}<br/>
+			  Location: {{quake.latitude}} / {{quake.longitude}}<br/>
+			  <br/>
+		  </div>
 	  </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="app/app.js"></script>
