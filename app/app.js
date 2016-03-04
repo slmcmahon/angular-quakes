@@ -1,22 +1,35 @@
 var app = angular.module("Quakes", []);
 
 app.controller("QuakeController", function($scope, $http){
-	console.log("in controller");
+	
 	$scope.loadData = function() {
-		console.log("got here");
+		$scope.quakeItems = [];
 		$http({
 			method: "GET",
 			url:"http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson"	
 		}).then(function mySuccess(response) {
-			var features = response.data["features"];
-			$scope.quakeCount = features.length;
-			features.forEach(function (feature){
-				var properties = feature.properties;
-				console.log(properties["place"]);
-			});
+			$scope.quakeItems = loadQuakeData(response.data["features"]);
 		}, 
 		function myError(response){
 			console.log(response.data.statusText);
 		});
 	};
+	
 });
+
+function loadQuakeData(features) {
+	var quakeData = [];
+	
+	features.forEach(function (feature) {
+		var props = feature.properties;
+		var coords = feature.geometry.coordinates;
+		quakeData.push({
+		  "place":props["place"],
+		  "magnitude":props["mag"],
+		  "latitude":coords[0],
+		  "longitude":coords[1]
+		});
+	});
+	
+	return quakeData;
+}
