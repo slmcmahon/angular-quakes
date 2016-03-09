@@ -7,21 +7,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
   <body ng-app="Quakes">
-    <div ng-controller="QuakeController" ng-init="loadData()">
-      <ul class="list-group" ng-repeat="quake in quakeItems">
+    <div ng-controller="QuakeController">
+      <ul class="list-group" ng-repeat="q in quakeItems">
         <li class="list-group-item">
-          Title: {{quake.title}}<br/>
-          Magnitude: {{quake.magnitude}}<br/>
-          Location: {{quake.latitude}} / {{quake.longitude}}<br/>
-          Time: {{quake.date}}<br/>
-          Tsunami warning: {{quake.tsunami}}<br>
-          <a href="{{quake.url}}">More Info</a>
+          <quake-detail quake="q"></quake-detail>
         </li>
       </ul>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="app/app.js"></script>
-    <script src="assets/js/utilities.js"></script>
+	<script src="app/components/QuakeDetailController.js"></script>
 	<script src="assets/js/moment.min.js"></script>
   </body>
 </html>
