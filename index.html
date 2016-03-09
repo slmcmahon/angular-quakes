@@ -8,15 +8,12 @@
 </head>
   <body ng-app="Quakes">
     <div ng-controller="QuakeController">
-      <ul class="list-group" ng-repeat="q in quakeItems">
-        <li class="list-group-item">
-          <quake-detail quake="q"></quake-detail>
-        </li>
-      </ul>
+		<quake-list list="quakeItems"></quake-list>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="app/index.js"></script>
 	<script src="app/components/QuakeDetailController.js"></script>
+	<script src="app/components/QuakeListController.js"></script>
 	<script src="assets/js/moment.min.js"></script>
   </body>
 </html>
