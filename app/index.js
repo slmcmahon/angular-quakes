@@ -1,46 +1,25 @@
-var QUAKES_URL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+(function(){
+	'use strict';
 
-var app = angular.module("Quakes", []);
-
-app.controller("QuakeController", function($scope, $http){
+	angular.module("Quakes", [])
+	.controller('QuakeController', QuakeController);
 	
-	$scope.quakeItems = [];
+	QuakeController.$inject = ['quakeService'];
 	
-	$http({
-		method: "GET",
-		url:QUAKES_URL	
-	}).then(function mySuccess(response) {
-		$scope.quakeItems = loadQuakeData(response.data["features"]);
-	}, 
-	function myError(response){
-		console.log(response.data.statusText);
-	});
-	
-});
-
-function loadQuakeData(features) {
-	var quakeData = [];
-	
-	features.forEach(function (feature) {
-		var props = feature.properties;
-		var coords = feature.geometry.coordinates;
-		var tsunami = props["tsunami"];
+	function QuakeController(quakeService) {
+		var vm = this;
+		vm.quakeList = [];
 		
-		var d = new Date(0);
-		d.setUTCSeconds(props["time"] / 1000);
-		var m = moment(d);
+		getQuakes();
 		
-		quakeData.push({
-			"place":props["place"],
-			"title":props["title"],
-			"magnitude":props["mag"],
-			"url":props["url"],
-			"latitude":coords[1],
-			"longitude":coords[0],
-			"tsunami": (tsunami && tsunami == 1) ? "yes" : "no",
-			"date":m.format('DD-MMM-YYYY [at] HH:mm')
-		});
-	});
+		function getQuakes() {
+			return quakeService.loadQuakes().then(function(data){
+				vm.quakeList = data;
+				return vm.quakeList;
+			});
+		}
+	}
 	
-	return quakeData;
-}
+})();
+
+
