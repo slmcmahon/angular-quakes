@@ -12,7 +12,7 @@
 		});
 
 	function QuakeDetailController($scope, $element, $attrs) {
-    	var ctrl = this;
+		var ctrl = this;
 	}
 })();
 
