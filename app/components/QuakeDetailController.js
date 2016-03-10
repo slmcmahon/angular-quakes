@@ -9,7 +9,7 @@
 	    	bindings: {
 	    		quake: '<'
 	    	}
-	});
+		});
 
 	function QuakeDetailController($scope, $element, $attrs) {
     	var ctrl = this;
